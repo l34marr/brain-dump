@@ -171,3 +171,8 @@ export default storeFactory
 
 factory 被呼叫時會建構並回傳使用 logger 與 saver 的 store。
 
+# Figma
+
+[UI/UX Intro](https://www.youtube.com/watch?v=slzEfUjuhsQ)
+[Auto Layout](https://www.youtube.com/watch?v=JR4N7cSJ54g)
+[]
