@@ -58,6 +58,8 @@ $ python manage.py runserver
 
 # React
 
+[Creating PopUp Window](http://medium.com/@daniela.sandoval/creating-a-popup-window-using-js-and-react-4c4bd125da57): 1. Identifying Events 2. Manipuating the DOM 3. Making Requests to the Server
+
 在純 React 或 Flux 應用程式裡，建議將 state 盡可能儲存在幾個物件中。
 使用 Redux 時，我們將 state 管理從 React 中完全抽出，由 Redux 管理，它要求將所有 state 集中在單一不可變的物件中。
 
