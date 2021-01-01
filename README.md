@@ -56,6 +56,11 @@ $ python manage.py runserver
 
 在 settings.py 註冊 todo 應用程式，再到 models.py 修改 Model 定義。
 
+# Data
+
+https://elitedatascience.com/python-seaborn-tutorial
+https://github.com/search?q=pokemon.csv
+
 # React
 
 [Creating PopUp Window](http://medium.com/@daniela.sandoval/creating-a-popup-window-using-js-and-react-4c4bd125da57): 1. Identifying Events 2. Manipuating the DOM 3. Making Requests to the Server
