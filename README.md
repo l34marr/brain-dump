@@ -183,3 +183,7 @@ factory 被呼叫時會建構並回傳使用 logger 與 saver 的 store。
 [UI/UX Intro](https://www.youtube.com/watch?v=slzEfUjuhsQ)
 [Auto Layout](https://www.youtube.com/watch?v=JR4N7cSJ54g)
 []
+
+# AWS
+
+[Edge Location](https://www.youtube.com/watch?v=3hLmDS179YE&t=1600)
