@@ -187,6 +187,9 @@ Figma
 RWD vs AWD
 [RWD uses One CSS, AWD uses Many CSS for Different Devices]()
 
-# AWS
+# Cloud
 
-[Edge Location](https://www.youtube.com/watch?v=3hLmDS179YE&t=1600)
+AWS [Edge Location](https://www.youtube.com/watch?v=3hLmDS179YE&t=1600)
+[Software LifeCycle: Day 0 1 2](https://codilime.com/day-0-day-1-day-2-the-software-lifecycle-in-the-cloud-age/)
+[Rook: Storage for Kubernetes](https://www.youtube.com/watch?v=dA29dIK6g5o)
+[Helm: Package for Kubernetes](https://cwhu.medium.com/kubernetes-helm-chart-tutorial-fbdad62a8b61)
