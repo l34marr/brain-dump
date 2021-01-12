@@ -2,6 +2,11 @@
 
 to make my brain more peaceful
 
+# ml
+
+https://www.facebook.com/1663370253938946/posts/2916769348599024/
+Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization
+
 # conda
 
 conda create --name myenv python=3.8
