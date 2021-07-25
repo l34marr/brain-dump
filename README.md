@@ -68,18 +68,19 @@ https://github.com/search?q=pokemon.csv
 
 # React
 
+chakra-ui 只要善用 [Box Flex](https://weekly.starbugs.dev/2020/11/17/55-when-you-start-working-you-will-move/) 就能建立多樣區塊，使用 props 能減少 style 部份的困擾 [StrictMode ThemeProvider CSSReset](https://youtu.be/NyG7YJWJd6s?t=116) 
 [Creating PopUp Window](http://medium.com/@daniela.sandoval/creating-a-popup-window-using-js-and-react-4c4bd125da57): 1. Identifying Events 2. Manipuating the DOM 3. Making Requests to the Server
 
 在純 React 或 Flux 應用程式裡，建議將 state 盡可能儲存在幾個物件中。
 使用 Redux 時，我們將 state 管理從 React 中完全抽出，由 Redux 管理，它要求將所有 state 集中在單一不可變的物件中。
 
-obj
-+-- {user}
-+-- [messages] -- {message}, {message}
-+-- editMessage
-+-- [expandedMessage]
-+-- [posts] -- {post}, {post}
-+-- [postsSeen]
+    obj
+    +-- {user}
+    +-- [messages] -- {message}, {message}
+    +-- editMessage
+    +-- [expandedMessage]
+    +-- [posts] -- {post}, {post}
+    +-- [postsSeen]
 
 建構 Redux 應用程式時，第一件事是考慮 state 嘗試將它定義在單一物件中。接著再透過 action 更新 state 並記錄異動歷史。
 如果物件導向設計是名詞導向，在 Redux 思惟裡是動詞導向，辨識出 action 後，可以將它們列在 constants.js 檔案裡。
