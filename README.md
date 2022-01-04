@@ -198,6 +198,10 @@ Mermaid
 - Documentation-Rot is a Catch-22 that Mermaid helps to solve.
 - [Gantt Chart Example](https://mermaid-js.github.io/mermaid/#/./gantt)
 
+CSS
+
+- [Hamburger fold out menu](https://github.com/DevEdwin/CodePen-Home-Pure-CSS-Hamburger-fold-out-menu)
+
 # Cloud
 
 AWS [Edge Location](https://www.youtube.com/watch?v=3hLmDS179YE&t=1600)
