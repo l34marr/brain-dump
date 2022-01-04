@@ -193,6 +193,11 @@ Figma
 RWD vs AWD
 [RWD uses One CSS, AWD uses Many CSS for Different Devices]()
 
+Mermaid
+
+- Documentation-Rot is a Catch-22 that Mermaid helps to solve.
+- [Gantt Chart Example](https://mermaid-js.github.io/mermaid/#/./gantt)
+
 # Cloud
 
 AWS [Edge Location](https://www.youtube.com/watch?v=3hLmDS179YE&t=1600)
