@@ -1,3 +1,170 @@
+Converting speech to text (transcription) with timestamps in a WSL (Windows Subsystem for Linux) environment is best handled using **FFmpeg** for audio extraction and **OpenAI’s Whisper** for the actual transcription. Whisper is highly accurate and handles timestamping natively.
+
+Here is the step-by-step workflow to get this running.
+
+---
+
+### 1. Prerequisites: Install Tools
+
+First, ensure your WSL distribution (like Ubuntu) is up to date and has the necessary dependencies.
+
+* **FFmpeg:** To strip audio from your `.mp4`.
+* **Python/PIP:** To install the transcription engine.
+
+Run these commands in your WSL terminal:
+
+```bash
+sudo apt update && sudo apt install ffmpeg python3-pip -y
+pip install openai-whisper
+
+```
+
+---
+
+### 2. Extract Audio (Optional but Recommended)
+
+While Whisper can process `.mp4` files directly, extracting the audio into a lightweight `.mp3` or `.wav` first can prevent memory issues and speed up the process.
+
+```bash
+ffmpeg -i input_video.mp4 -vn -acodec libmp3lame -q:a 2 output_audio.mp3
+
+```
+
+* `-vn`: Disables video recording.
+* `-acodec libmp3lame`: Sets the codec to MP3.
+
+---
+
+### 3. Generate the Script with Timestamps
+
+Use the `whisper` command. By default, it generates several file formats, including `.txt` (plain text), `.srt`, and `.vtt` (both of which include timestamps).
+
+```bash
+whisper output_audio.mp3 --model small --output_format srt
+
+```
+
+**Key Parameters:**
+
+* **`--model`**: Options include `tiny`, `base`, `small`, `medium`, and `large`.
+* *Tip:* `small` or `base` is usually the "sweet spot" for speed vs. accuracy on a standard laptop.
+
+
+* **`--output_format`**: Using `srt` or `vtt` ensures you get the timestamps mapped to the text.
+* **`--language`**: (Optional) You can specify `--language English` to save the model from "guessing."
+
+---
+
+### 4. Viewing Your Script
+
+Once the process finishes, you will see a file named `output_audio.srt` in your directory. You can view it directly in the terminal to check the timestamps:
+
+```bash
+cat output_audio.srt
+
+```
+
+The output will look like this:
+
+```text
+1
+00:00:00,000 --> 00:00:05,000
+Hello and welcome to the presentation on machine learning.
+
+2
+00:00:05,000 --> 00:00:08,000
+Today we are going to cover the basics...
+
+```
+
+---
+
+### Pro-Tip: GPU Acceleration
+
+If you have an NVIDIA GPU and want this to run significantly faster, ensure you have the **NVIDIA Container Toolkit** installed in WSL. Whisper will automatically use `cuda` if it detects a compatible GPU, turning a 10-minute job into a 1-minute job.
+
+---
+
+The following script will loop through every `.mp4` file in your current directory, extract the audio, and generate an `.srt` file (with timestamps) for each one using the Whisper "base" model.
+
+### The Automation Script
+
+Copy and paste this into a file named `transcribe_all.sh`:
+
+```bash
+#!/bin/bash
+
+# Check if whisper is installed
+if ! command -v whisper &> /dev/null; then
+    echo "Error: whisper command not found. Install it with 'pip install openai-whisper'."
+    exit 1
+fi
+
+# Loop through all mp4 files in the current folder
+for file in *.mp4; do
+    # Remove extension to get the base filename
+    filename="${file%.*}"
+    
+    echo "------------------------------------------------"
+    echo "Processing: $file"
+    echo "------------------------------------------------"
+
+    # 1. Extract audio to a temporary mp3
+    ffmpeg -i "$file" -vn -acodec libmp3lame -q:a 2 "${filename}_temp.mp3" -loglevel error
+
+    # 2. Run Whisper (using 'base' model for a good balance of speed/accuracy)
+    # Output formats: srt (timestamps) and txt (plain text)
+    whisper "${filename}_temp.mp3" --model base --output_format srt --output_dir .
+
+    # 3. Clean up the temporary audio file
+    rm "${filename}_temp.mp3"
+
+    # 4. Rename the .srt to match the original filename if necessary
+    mv "${filename}_temp.srt" "${filename}.srt" 2>/dev/null
+
+    echo "Done! Created ${filename}.srt"
+done
+
+echo "------------------------------------------------"
+echo "All files processed successfully."
+
+```
+
+---
+
+### How to Run It
+
+1. **Make it executable:**
+```bash
+chmod +x transcribe_all.sh
+
+```
+
+
+2. **Run it:**
+```bash
+./transcribe_all.sh
+
+```
+
+
+
+### Why this approach works:
+
+* **Batch Processing:** It handles 1 file or 100 files without you having to restart the command.
+* **Cleanup:** It automatically deletes the temporary `.mp3` files after transcription to save disk space in your WSL environment.
+* **Timestamp Preservation:** By choosing the `.srt` format, you get the standard subtitle format which includes the exact `start --> end` times for every sentence.
+
+---
+
+### Model Choice Note
+
+In the script, I set `--model base`. If you find the accuracy isn't high enough (especially for technical jargon or heavy accents), you can change that line to `--model small` or `--model medium`. Just keep in mind that larger models require more RAM and take longer to process.
+
+
+
+
+
 # Quick Notes
 
 to make my brain more peaceful
