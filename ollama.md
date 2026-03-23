@@ -1,3 +1,4 @@
+# WSL
 確認 ollama 成功執行
 ```
 $ grep ExecStart /etc/systemd/system/ollama.service
@@ -46,4 +47,19 @@ $ curl http://localhost:11434/api/generate \
 更換 IP 設定
 ```
 export OLLAMA_HOST=192.168.117.161:11434
+```
+# MacMini4
+
+```
+% ps aux | grep ollama
+% ollama serve
+time=2026-03-23T11:57:09.148+08:00 level=INFO source=routes.go:1727 msg="server config" env="map[HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/Users/omniit/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false http_proxy: https_proxy: no_proxy:]"
+time=2026-03-23T11:57:09.148+08:00 level=INFO source=routes.go:1729 msg="Ollama cloud disabled: false"
+time=2026-03-23T11:57:09.150+08:00 level=INFO source=images.go:477 msg="total blobs: 25"
+time=2026-03-23T11:57:09.150+08:00 level=INFO source=images.go:484 msg="total unused blobs removed: 0"
+time=2026-03-23T11:57:09.151+08:00 level=INFO source=routes.go:1782 msg="Listening on 127.0.0.1:11434 (version 0.18.0)"
+time=2026-03-23T11:57:09.151+08:00 level=INFO source=runner.go:67 msg="discovering available GPUs..."
+time=2026-03-23T11:57:09.152+08:00 level=INFO source=server.go:430 msg="starting runner" cmd="/Applications/Ollama.app/Contents/Resources/ollama runner --ollama-engine --port 49156"
+time=2026-03-23T11:57:09.211+08:00 level=INFO source=types.go:42 msg="inference compute" id=0 filter_id=0 library=Metal compute=0.0 name=Metal description="Apple M4 Pro" libdirs="" driver=0.0 pci_id="" type=discrete total="37.4 GiB" available="37.4 GiB"
+time=2026-03-23T11:57:09.211+08:00 level=INFO source=routes.go:1832 msg="vram-based default context" total_vram="37.4 GiB" default_num_ctx=32768
 ```
