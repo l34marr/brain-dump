@@ -31,6 +31,11 @@ $ cat .config/opencode/opencode.json
 
 # Speech vs Text
 
+[Google Cloud Text-to-Speech](https://docs.cloud.google.com/text-to-speech/docs/create-audio): Speech Synthesis Markup Language (SSML)
+```
+<say-as interpret-as="characters">SSML</say-as>
+```
+
 方法一：直接驅動 FFmpeg（適合基礎剪輯、轉檔與畫面處理）
 
 適用場景： 影片裁切、加速、合併、加浮水印、壓製字幕。
