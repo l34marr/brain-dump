@@ -72,3 +72,15 @@ $ cat .config/opencode/opencode.json
 
 如果想要生成影片，可以使用vpick 自動生圖 ，再圖生影片，甚至是串接聲音配音，把 kling , nanobanana等一次完成
 
+# Gemini CLI as quick search tool
+
+installed gemini-cli 0.36.0 via brew 5.1.4 on Rocky 9.7
+tried avoiding hallucination with [system prompt](https://geminicli.com/docs/cli/system-prompt/) rules in ~/.gemini/system.md
+
+```
+# Rules
+
+1. Run Search Jobs Only, No Explaination Needed
+2. Only List Outputs with Source References
+3. Summarize the Source Contents if Available
+```
